@@ -25,10 +25,11 @@ THE SOFTWARE.
 from .stream import define_stream
 
 # Write address channel
+# Removed awlock in signal_widths since awlock could be length of {1, 2}
 AxiAWBus, AxiAWTransaction, AxiAWSource, AxiAWSink, AxiAWMonitor = define_stream("AxiAW",
     signals=["awid", "awaddr", "awlen", "awsize", "awburst", "awvalid", "awready"],
     optional_signals=["awlock", "awcache", "awprot", "awqos", "awregion", "awuser"],
-    signal_widths={"awlen": 8, "awsize": 3, "awburst": 2, "awlock": 1,
+    signal_widths={"awlen": 8, "awsize": 3, "awburst": 2,
         "awcache": 4, "awprot": 3, "awqos": 4, "awregion": 4}
 )
 
@@ -47,10 +48,11 @@ AxiBBus, AxiBTransaction, AxiBSource, AxiBSink, AxiBMonitor = define_stream("Axi
 )
 
 # Read address channel
+# Removed arlock in signal_widths since arlock could be length of {1, 2}
 AxiARBus, AxiARTransaction, AxiARSource, AxiARSink, AxiARMonitor = define_stream("AxiAR",
     signals=["arid", "araddr", "arlen", "arsize", "arburst", "arvalid", "arready"],
     optional_signals=["arlock", "arcache", "arprot", "arqos", "arregion", "aruser"],
-    signal_widths={"arlen": 8, "arsize": 3, "arburst": 2, "arlock": 1,
+    signal_widths={"arlen": 8, "arsize": 3, "arburst": 2,
         "arcache": 4, "arprot": 3, "arqos": 4, "arregion": 4}
 )
 
